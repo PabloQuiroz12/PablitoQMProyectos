@@ -56,6 +56,6 @@ public class Main {
 
         aplicacion.obtenerProdSinStock();
 
-            //aplicacion.menu();
+        //aplicacion.menu();
     }
 }
