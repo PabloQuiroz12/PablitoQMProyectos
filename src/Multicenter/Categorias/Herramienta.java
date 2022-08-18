@@ -12,19 +12,12 @@ public class Herramienta extends Producto {
         this.material = material;
     }
 
-    public String getTipoHerramienta() {
-        return tipoHerramienta;
-    }
-
-    public void setTipoHerramienta(String tipoHerramienta) {
-        this.tipoHerramienta = tipoHerramienta;
-    }
-
-    public String getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(String material) {
-        this.material = material;
+    @Override
+    public String toString() {
+        return "Herramienta{\n\t"
+                +super.toString()
+                + "\n\t\t\ttipoHerramienta='" + tipoHerramienta + '\''
+                + ", material='" + material + '\''
+                + "} ";
     }
 }

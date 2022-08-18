@@ -11,11 +11,10 @@ public class Juguete extends Producto {
 
     }
 
-    public String getTipoDeUso() {
-        return tipoDeUso;
-    }
-
-    public void setTipoDeUso(String tipoDeUso) {
-        this.tipoDeUso = tipoDeUso;
+    @Override
+    public String toString() {
+        return "Juguete{\n\t" + super.toString()
+                + "\n\t\t\ttipoDeUso='" + tipoDeUso + '\''
+                + "} " ;
     }
 }

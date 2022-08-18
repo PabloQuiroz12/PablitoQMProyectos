@@ -27,54 +27,23 @@ public class GestionProductos {
         System.out.println("LISTA DE PRODUCTOS EN LA TIENDA:");
 
         System.out.println("\t");
-        System.out.println("----JUGUETES----");
-
-        for (int i = 0; i < listaJuguetes.length; i++) {
-            if (listaJuguetes[i] != null) {
-                System.out.println(listaJuguetes[i].getId() + ". " + listaJuguetes[i].getNombre()
-                        + "   ||  "
-                        + "Precio: " + listaJuguetes[i].getPrecio()
-                        + moneda);
-            }
-        }
-
-        System.out.println("\t");
-        System.out.println("----MUEBLES----");
-
-        for (int i = 0; i < listaMuebles.length; i++) {
-            if (listaMuebles[i] != null) {
-                System.out.println(listaMuebles[i].getId() + ". " + listaMuebles[i].getNombre()
-                        + "   ||  "
-                        + "Precio: " + listaMuebles[i].getPrecio()
-                        + moneda);
-            }
-        }
-
-        System.out.println("\t");
-        System.out.println("----ELECTRODOMESTICOS----");
-
-        for (int i = 0; i < listaElectrodomesticos.length; i++) {
-            if (listaElectrodomesticos[i] != null) {
-                System.out.println(listaElectrodomesticos[i].getId() + ". " + listaElectrodomesticos[i].getNombre()
-                        + "   ||  "
-                        + "Precio: " + listaElectrodomesticos[i].getPrecio()
-                        + moneda);
-            }
-        }
-
-        System.out.println("\t");
-        System.out.println("----HERRAMIENTAS----");
-
-        for (int i = 0; i < listaHerramientas.length; i++) {
-            if (listaHerramientas[i] != null) {
-                System.out.println(listaHerramientas[i].getId() + ". " + listaHerramientas[i].getNombre()
-                        + "   ||  "
-                        + "Precio: " + listaHerramientas[i].getPrecio()
-                        + moneda);
-            }
-        }
+        System.out.println("------------PRODUCTOS------------");
+        System.out.println("----JUGUETES");
+        auxMostrarListaDeProductos(listaJuguetes);
+        System.out.println("----MUEBLES");
+        auxMostrarListaDeProductos(listaMuebles);
+        System.out.println("----ELECTRODOMESTICOS");
+        auxMostrarListaDeProductos(listaElectrodomesticos);
+        System.out.println("----HERRAMIENTAS");
+        auxMostrarListaDeProductos(listaHerramientas);
         System.out.println("__________________________________________________________________________");
 
+    }
+    protected void auxMostrarListaDeProductos(Producto []listProd){
+        for(int i = 0 ; i < listProd.length ; i++){
+            if (listProd[i] != null)
+                System.out.println((i+1)+". "+listProd[i].getNombre());
+        }
     }
 
 
@@ -98,7 +67,7 @@ public class GestionProductos {
         }
     }
 
-    public void buscarProd() {
+    /*public void buscarProd() {
 
         try {
             System.out.print("INGRESE EL INDICE DEL PRODUCTO QUE DESEA BUSCAR: ");
@@ -171,39 +140,31 @@ public class GestionProductos {
             //a.printStackTrace();
         }
 
-    }
+    }*/
 
     public Producto buscarProd2(String nombreProd) {
-        for (int i = 0; i < listaJuguetes.length; i++) {
-            if (listaJuguetes[i] != null) {
-                if (listaJuguetes[i].getNombre().equals(nombreProd)) {
-                    return listaJuguetes[i];
-                }
-            }
-        }
-        for (int i = 0; i < listaMuebles.length; i++) {
-            if (listaMuebles[i] != null) {
-                if (listaMuebles[i].getNombre().equals(nombreProd)) {
-                    return listaMuebles[i];
-                }
-            }
-        }
-        for (int i = 0; i < listaElectrodomesticos.length; i++) {
-            if (listaElectrodomesticos[i] != null) {
-                if (listaElectrodomesticos[i].getNombre().equals(nombreProd)) {
-                    return listaElectrodomesticos[i];
-                }
-            }
-        }
-        for (int i = 0; i < listaHerramientas.length; i++) {
-            if (listaHerramientas[i] != null) {
-                if (listaHerramientas[i].getNombre().equals(nombreProd)) {
-                    return listaHerramientas[i];
-                }
+        Producto buscado = auxBuscarProd2(nombreProd,listaJuguetes);
+        if(buscado != null)
+            return buscado;
+        buscado = auxBuscarProd2(nombreProd,listaMuebles);
+        if(buscado != null)
+            return buscado;
+        buscado = auxBuscarProd2(nombreProd,listaElectrodomesticos);
+        if(buscado!= null)
+            return buscado;
+        buscado = auxBuscarProd2(nombreProd,listaHerramientas);
+        return buscado;
+    }
+
+    protected Producto auxBuscarProd2(String nombreProd, Producto []listProd){
+        for(int i=0 ; i < listProd.length ; i++){
+            if(listProd[i] != null && listProd[i].getNombre().equals(nombreProd)){
+                return listProd[i];
             }
         }
         return null;
     }
+
 
     public void obtenerProdSinStock() {
         System.out.println("\t");
